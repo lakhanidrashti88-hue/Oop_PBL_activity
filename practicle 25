@@ -1,0 +1,52 @@
+
+// Shared class with synchronized method
+class Table {
+
+    // synchronized method to avoid mixing output
+    synchronized void printTable(int n) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(Thread.currentThread().getName() +
+                    " : " + n + " x " + i + " = " + (n * i));
+
+            try {
+                Thread.sleep(200); // small delay for clarity
+            } catch (InterruptedException e) {
+                System.out.println("Interrupted");
+            }
+        }
+    }
+}
+
+// Thread class
+class MyThread extends Thread {
+    Table t;
+    int number;
+
+    MyThread(Table t, int number, String name) {
+        super(name);
+        this.t = t;
+        this.number = number;
+    }
+
+    public void run() {
+        t.printTable(number);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        Table obj = new Table();
+
+        // Thread for table of 5
+        MyThread t1 = new MyThread(obj, 5, "Table-5 Thread");
+
+        // Thread for table of 7
+        MyThread t2 = new MyThread(obj, 7, "Table-7 Thread");
+
+        // Start threads
+        t1.start();
+        t2.start();
+    }
+}
