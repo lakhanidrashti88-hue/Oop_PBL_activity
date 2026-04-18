@@ -1,0 +1,43 @@
+class Employee {
+
+    protected String name = "John";
+    protected String department = "IT";
+
+    // Method to display employee details
+    public void displayDetails() {
+        System.out.println("Employee Details:");
+        System.out.println("Name: " + name);
+        System.out.println("Department: " + department);
+    }
+}
+
+class Manager extends Employee {
+
+    private int teamSize = 10;
+    private String projectName = "AI Development";
+
+    // Overriding method
+    @Override
+    public void displayDetails() {
+        System.out.println("Manager Details:");
+        System.out.println("Name: " + name);
+        System.out.println("Department: " + department);
+        System.out.println("Team Size: " + teamSize);
+        System.out.println("Project Name: " + projectName);
+    }
+}
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+
+        // Employee object
+        Employee emp = new Employee();
+        emp.displayDetails();
+
+        System.out.println();
+
+        // Manager object
+        Employee mgr = new Manager(); // runtime polymorphism
+        mgr.displayDetails();
+    }
+}
