@@ -1,0 +1,49 @@
+class Point {
+
+    // Data fields
+    private int x;
+    private int y;
+
+    // Default constructor (initializes x and y to 5)
+    public Point() {
+        this.x = 5;
+        this.y = 5;
+    }
+
+    // Parameterized constructor
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Copy constructor
+    public Point(Point other) {
+        this.x = other.x;
+        this.y = other.y;
+    }
+
+    // Method to display point coordinates
+    public void display() {
+        System.out.println("Point coordinates: (" + x + ", " + y + ")");
+    }
+}
+
+public class PointDemo {
+    public static void main(String[] args) {
+
+        // Using default constructor
+        Point p1 = new Point();
+        System.out.print("p1 -> ");
+        p1.display();
+
+        // Using parameterized constructor
+        Point p2 = new Point(10, 20);
+        System.out.print("p2 -> ");
+        p2.display();
+
+        // Using copy constructor
+        Point p3 = new Point(p2);
+        System.out.print("p3 (copy of p2) -> ");
+        p3.display();
+    }
+}
