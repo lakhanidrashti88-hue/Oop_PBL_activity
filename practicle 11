@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+// Outer class
+class College {
+
+    // Outer class data member
+    private String collegeName;
+
+    // Constructor to initialize college name
+    public College(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    // Non-static inner class
+    class Admission {
+
+        // Student-specific details
+        private String studentName;
+        private String course;
+
+        // Method to accept student details
+        public void acceptStudentData() {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Enter student name: ");
+            studentName = scanner.nextLine();
+
+            System.out.print("Enter course: ");
+            course = scanner.nextLine();
+        }
+
+        // Method to display admission details
+        public void displayAdmissionDetails() {
+            System.out.println("\n--- Admission Details ---");
+            System.out.println("College Name: " + collegeName); // accessing outer class data
+            System.out.println("Student Name: " + studentName);
+            System.out.println("Course: " + course);
+        }
+    }
+}
+
+// Main class
+public class CollegeAdmissionDemo {
+    public static void main(String[] args) {
+
+        // Create outer class object
+        College college = new College("SSASIT");
+
+        // Create inner class object using outer class object
+        College.Admission admission = college.new Admission();
+
+        // Accept and display data
+        admission.acceptStudentData();
+        admission.displayAdmissionDetails();
+    }
+}
