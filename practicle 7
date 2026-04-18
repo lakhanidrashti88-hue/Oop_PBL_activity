@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+class Employee {
+
+    // Private instance variables
+    private String employeeName;
+    private double employeeSalary;
+
+    // Method to take input from user
+    public void readEmployeeData() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter employee name: ");
+        employeeName = scanner.nextLine();
+
+        System.out.print("Enter employee salary: ");
+        employeeSalary = scanner.nextDouble();
+    }
+
+    // Method to display employee details
+    public void displayEmployeeData() {
+        System.out.println("\nEmployee Details:");
+        System.out.println("Name: " + employeeName);
+        System.out.println("Salary: " + employeeSalary);
+    }
+}
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+
+        // Create object of Employee class
+        Employee emp = new Employee();
+
+        // Read and display data using methods
+        emp.readEmployeeData();
+        emp.displayEmployeeData();
+    }
+}
