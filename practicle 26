@@ -1,0 +1,53 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileCounter {
+
+    public static void main(String[] args) {
+
+        // Check if file name is provided
+        if (args.length == 0) {
+            System.out.println("Please provide file name as command-line argument.");
+            return;
+        }
+
+        String fileName = args[0];
+
+        int charCount = 0;
+        int wordCount = 0;
+        int lineCount = 0;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                lineCount++;
+
+                // Character count (including spaces in line)
+                charCount += line.length();
+
+                // Word count (split using whitespace)
+                String[] words = line.trim().split("\\s+");
+
+                if (!line.trim().isEmpty()) {
+                    wordCount += words.length;
+                }
+            }
+
+            br.close();
+
+            // Display results
+            System.out.println("File Name  : " + fileName);
+            System.out.println("Lines      : " + lineCount);
+            System.out.println("Words      : " + wordCount);
+            System.out.println("Characters : " + charCount);
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
