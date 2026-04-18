@@ -1,0 +1,43 @@
+class MyThread extends Thread {
+    int start, end;
+
+    // User-defined constructor
+    MyThread(String name, int start, int end) {
+        super(name);
+        this.start = start;
+        this.end = end;
+    }
+
+    // Thread task
+    public void run() {
+        for (int i = start; i <= end; i++) {
+            System.out.println(getName() + " : " + i);
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        // Creating threads
+        MyThread t1 = new MyThread("Thread T1", 1, 100);
+        MyThread t2 = new MyThread("Thread T2", 101, 200);
+        MyThread t3 = new MyThread("Thread T3", 201, 300);
+
+        // Start and ensure sequential execution using join()
+        try {
+            t1.start();
+            t1.join();   // Wait for T1 to finish
+
+            t2.start();
+            t2.join();   // Wait for T2 to finish
+
+            t3.start();
+            t3.join();   // Wait for T3 to finish
+
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted");
+        }
+    }
+}
