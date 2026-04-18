@@ -1,0 +1,29 @@
+interface Classify {
+    String getDivision(double average);
+}
+
+class Result implements Classify {
+
+    // Implementing interface method
+    @Override
+    public String getDivision(double average) {
+        if (average >= 60) {
+            return "First Division";
+        } else {
+            return "Second Division";
+        }
+    }
+}
+
+public class DivisionDemo {
+    public static void main(String[] args) {
+
+        Result result = new Result();
+
+        double avg1 = 75;
+        double avg2 = 45;
+
+        System.out.println("Average: " + avg1 + " -> " + result.getDivision(avg1));
+        System.out.println("Average: " + avg2 + " -> " + result.getDivision(avg2));
+    }
+}
