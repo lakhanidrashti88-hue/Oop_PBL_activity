@@ -1,0 +1,50 @@
+public class Rectangle {
+
+    // Data fields with default values
+    private double width = 1;
+    private double height = 1;
+
+    // No-argument constructor
+    public Rectangle() {
+        // default values already set (1, 1)
+    }
+
+    // Constructor with parameters
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    // Method to calculate area
+    public double getArea() {
+        return width * height;
+    }
+
+    // Method to calculate perimeter
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    // Optional: getters (useful for testing)
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    // Test the class
+    public static void main(String[] args) {
+        Rectangle r1 = new Rectangle(); // default rectangle
+        Rectangle r2 = new Rectangle(5, 3); // custom rectangle
+
+        System.out.println("Rectangle 1:");
+        System.out.println("Area: " + r1.getArea());
+        System.out.println("Perimeter: " + r1.getPerimeter());
+
+        System.out.println("\nRectangle 2:");
+        System.out.println("Area: " + r2.getArea());
+        System.out.println("Perimeter: " + r2.getPerimeter());
+    }
+}
