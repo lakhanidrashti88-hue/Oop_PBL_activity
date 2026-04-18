@@ -1,0 +1,44 @@
+// Custom Exception Class
+class BookNotAvailableException extends Exception {
+    public BookNotAvailableException(String message) {
+        super(message);
+    }
+}
+
+// Library Class
+class Library {
+    int availableBooks;
+
+    // Constructor
+    Library(int availableBooks) {
+        this.availableBooks = availableBooks;
+    }
+
+    // Method to issue books
+    public void issueBook(int count) throws BookNotAvailableException {
+        if (count <= availableBooks) {
+            availableBooks -= count;
+            System.out.println("Book issued successfully");
+        } else {
+            throw new BookNotAvailableException("Requested books not available");
+        }
+    }
+}
+
+// Main Class
+public class Main {
+    public static void main(String[] args) {
+        Library lib = new Library(3);
+
+        try {
+            // First request (valid)
+            lib.issueBook(2);
+
+            // Second request (invalid -> exception)
+            lib.issueBook(2);
+
+        } catch (BookNotAvailableException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
